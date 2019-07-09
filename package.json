@@ -1,0 +1,12 @@
+{
+  "name": "locations",
+  "description": "NodeJS test for 6nomadsd",
+  "private": false,
+  "devDependencies": {
+    "lerna": "^3.13.4"
+  },
+  "scripts": {
+    "build:watch": "lerna run build:watch --parallel",
+    "precommit": "lerna run precommit --parallel"
+  }
+}
