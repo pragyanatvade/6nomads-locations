@@ -1,0 +1,67 @@
+{
+  "name": "@6nomads/utils",
+  "version": "0.0.1",
+  "description": "Utility library for locations",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "babel src/ -d dist/ --source-maps",
+    "build:watch": "babel src/ -d dist/ --watch --source-maps",
+    "prepublish": "npm run build",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint src/ --fix"
+    }
+  },
+  "keywords": [
+    "nodejs",
+    "lerna"
+  ],
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Pragyan Tripathi <pragyan@vadelabs.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@vadelabs/specs": "^0.1.2",
+    "axios": "^0.18.0",
+    "axios-retry": "^3.1.2",
+    "bluebird": "^3.5.3",
+    "boom": "^7.3.0",
+    "debug": "^4.1.1",
+    "dotenv": "^6.2.0",
+    "jsonpath": "^1.0.1",
+    "jsonwebtoken": "^8.5.0",
+    "lodash": "^4.17.10",
+    "micro": "^9.3.3",
+    "micro-ex-router": "^1.7.1",
+    "mongoose": "^5.4.15",
+    "source-map-support": "^0.5.8",
+    "transducers-js": "^0.4.174"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-async-to-generator": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "^3.0.0",
+    "jest": "^24.1.0",
+    "prettier-eslint": "^8.8.2"
+  }
+}
