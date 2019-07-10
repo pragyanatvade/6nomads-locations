@@ -1,2 +1,2 @@
-# cradle-roles
-> Roles Management Service
+# @6nomads/locations
+> Locations services for 6nomads task

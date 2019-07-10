@@ -1,3 +1,3 @@
-import { model } from 'cradle-utils';
+import { model } from '@6nomads/utils';
 
 export default model;

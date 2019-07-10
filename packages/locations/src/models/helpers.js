@@ -1,4 +1,4 @@
-import { asyncReduceAndMerge } from 'cradle-utils';
+import { asyncReduceAndMerge } from '@6nomads/utils';
 import {
   canPostProcess,
   // canPreProcess,
@@ -8,7 +8,7 @@ import {
   canParseQueryAndFetchDocs,
   canGetFilterAndDeleteDocs,
   canUpsertAndFetchDoc
-} from 'cradle-dbal';
+} from '@6nomads/dbal';
 
 export const canGetFilter = ({ deps: { _ } }) => ({
   getFilter: async ({

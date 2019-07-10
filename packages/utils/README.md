@@ -1,2 +1,2 @@
-# locations-utils
-> Utility library for locations
+# @6nomads/utils
+> Utility library for the task project
