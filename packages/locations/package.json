@@ -1,5 +1,5 @@
 {
-  "name": "@6nomads/locations",
+  "name": "6nomads-locations",
   "version": "0.0.1",
   "description": "Locations service for the test",
   "main": "./dist/index.js",
@@ -35,8 +35,8 @@
   "author": "Pragyan Tripathi <pragyan@vadelabs.com>",
   "license": "ISC",
   "dependencies": {
-    "@6nomads/dbal": "^0.0.1",
-    "@6nomads/utils": "^0.0.1",
+    "6nomads-dbal": "^0.0.1",
+    "6nomads-utils": "^0.0.1",
     "source-map-support": "^0.5.8"
   },
   "devDependencies": {

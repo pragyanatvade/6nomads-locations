@@ -1,9 +1,9 @@
 import sourceMap from 'source-map-support';
-import { defaultDbBehaviors } from '@6nomads/dbal';
+import { defaultDbBehaviors } from '6nomads-dbal';
 
 import {
   config, asyncReduceAndMerge, deps, debug, server, scope
-} from '@6nomads/utils';
+} from '6nomads-utils';
 
 import { name as packageName } from '../package.json';
 import helpers from './models/helpers';
@@ -18,11 +18,10 @@ asyncReduceAndMerge(
   server,
   routes,
   controllers,
-  models,
+  // models,
   debug,
   scope,
-  deps,
   config
 )({
-  packageName, defaultDbBehaviors, schema, helpers
+  packageName, defaultDbBehaviors, schema, helpers, deps, name: packageName
 });

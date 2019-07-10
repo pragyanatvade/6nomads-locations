@@ -1,5 +1,5 @@
 {
-  "name": "@6nomads/dbal",
+  "name": "6nomads-dbal",
   "version": "0.0.1",
   "description": "Database abstraction layer for locations",
   "main": "./dist/index.js",
@@ -32,7 +32,7 @@
   "author": "Pragyan Tripathi <pragyan@vadelabs.com>",
   "license": "ISC",
   "dependencies": {
-    "@6nomads/utils": "^0.0.1",
+    "6nomads-utils": "^0.0.1",
     "source-map-support": "^0.5.8"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 
-import { asyncReduceAndMerge, asyncCompose } from '@6nomads/utils';
+import { asyncReduceAndMerge, asyncCompose } from '6nomads-utils';
 
 /**
  * Method to connect with the MongoDB instance

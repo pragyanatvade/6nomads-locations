@@ -3,9 +3,10 @@ import methods from '../methods';
 const { getPortNumber } = methods;
 
 export const server = ({
-  deps, routes, name, debug
+  deps: { micro }, routes, name, debug
 }) => {
-  const { micro } = deps;
+  console.log('server', name);
+  // const { micro } = deps;
   const app = micro(routes);
   const port = process.env.PORT || getPortNumber(name);
   app.listen(port, () => {

@@ -1,5 +1,5 @@
 {
-  "name": "@6nomads/utils",
+  "name": "6nomads-utils",
   "version": "0.0.1",
   "description": "Utility library for locations",
   "main": "./dist/index.js",
