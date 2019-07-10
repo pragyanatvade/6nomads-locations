@@ -3,10 +3,6 @@ const schema = {
     type: String,
     index: true,
     unique: true
-  },
-  locations: {
-    type: [String],
-    index: true
   }
 };
 
