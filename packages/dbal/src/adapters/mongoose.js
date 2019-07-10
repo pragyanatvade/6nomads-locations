@@ -1,6 +1,10 @@
 
-import { asyncReduceAndMerge, asyncCompose } from 'cradle-utils';
+import { asyncReduceAndMerge, asyncCompose } from '@6nomads/utils';
 
+/**
+ * Method to connect with the MongoDB instance
+ * @param {Object} config
+ */
 export const connect = async (config) => {
   const {
     deps: { mongoose, bluebird },
@@ -29,6 +33,9 @@ export const connect = async (config) => {
   return { model, name };
 };
 
+/**
+ * Inserts documents in the database
+ */
 export const canCreateDoc = ({ deps: { mongoose, _ }, name }) => ({
   createDoc: async ({ data, user, headers }) => {
     if (_.isEmpty(_.get(data, '_id'))) _.set(data, '_id', _.toString(mongoose.Types.ObjectId()));
@@ -38,6 +45,9 @@ export const canCreateDoc = ({ deps: { mongoose, _ }, name }) => ({
   }
 });
 
+/**
+ * Updates documents based on the filter
+ */
 export const canUpdateDoc = ({ deps: { mongoose }, name }) => ({
   updateDoc: async ({
     filter, update, options = {}, user, headers
@@ -50,6 +60,9 @@ export const canUpdateDoc = ({ deps: { mongoose }, name }) => ({
   }
 });
 
+/**
+ * Updates document atomically and returns updated document
+ */
 export const canAtomicUpdate = ({ deps: { mongoose, _ }, name }) => ({
   atomicUpdate: async ({
     filter, update, options = {}, user, headers
@@ -65,6 +78,9 @@ export const canAtomicUpdate = ({ deps: { mongoose, _ }, name }) => ({
   }
 });
 
+/**
+ * Creates document if it does not exist, Updates the document if it already exists in the database.
+ */
 export const canUpsertDoc = ({ atomicUpdate, deps: { _, mongoose } }) => ({
   upsertDoc: async ({
     filter, data, user, headers
@@ -77,6 +93,9 @@ export const canUpsertDoc = ({ atomicUpdate, deps: { _, mongoose } }) => ({
   }
 });
 
+/**
+ * Retrieves the list of documents based on the filter and pagination options
+ */
 export const canFetchDocs = ({ deps: { mongoose, _ }, name }) => ({
   fetchDocs: async ({
     filter, skip = 0, limit = 24, sort = { _id: -1 }, count = true, user, headers, input
@@ -106,6 +125,9 @@ export const canFetchDocs = ({ deps: { mongoose, _ }, name }) => ({
   }
 });
 
+/**
+ * Deletes the document if it matches the passed filter
+ */
 export const canDeleteDocs = ({ deps: { _ }, model, name }) => ({
   deleteDocs: async ({
     filter, input, user, headers
@@ -119,6 +141,9 @@ export const canDeleteDocs = ({ deps: { _ }, model, name }) => ({
   }
 });
 
+/**
+ * Returns a single document which matches the filter
+ */
 export const canFetchDoc = ({ fetchDocs, deps: { _ } }) => ({
   fetchDoc: async ({
     filter, user, headers, input
@@ -131,6 +156,10 @@ export const canFetchDoc = ({ fetchDocs, deps: { _ } }) => ({
   }
 });
 
+/**
+ * By default it is same as `fetchDoc`. But this method can be used
+ * for applying caching solutions for performance optimizations
+ */
 export const canFetchResponse = ({ fetchDoc, deps: { _ } }) => ({
   fetchResponse: async ({
     filter, user, headers, input
