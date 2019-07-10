@@ -37,6 +37,8 @@
   "dependencies": {
     "6nomads-dbal": "^0.0.1",
     "6nomads-utils": "^0.0.1",
+    "@google/maps": "^0.5.5",
+    "request-promise": "^4.2.4",
     "source-map-support": "^0.5.8"
   },
   "devDependencies": {
