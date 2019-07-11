@@ -3,12 +3,14 @@ import {
 } from '6nomads-utils';
 
 const canFetchLocations = ({ deps: { _ }, actions: { executeAction } }) => ({
-  createDoc: async ({ request }) => {
-    const { body: { locations = [] } = {} } = request;
+  fetchDocs: async ({ request }) => {
+    const { query } = request;
+    const queryObj = _.isString(query) ? JSON.parse(query) : query;
+    const { locations = [] } = queryObj;
     const originsArr = [];
     const destinationsArr = [];
     let count = 0;
-    _.forEach(locations, (location) => {
+    _.forEach(JSON.parse(locations), (location) => {
       if (count % 2 === 0) originsArr.push(location);
       else destinationsArr.push(location);
       count += 1;
@@ -32,9 +34,22 @@ const canFetchLocations = ({ deps: { _ }, actions: { executeAction } }) => ({
         }
       }
     };
-    const record = await executeAction(options);
-
-    const resp = { data: record };
+    const { rows } = await executeAction(options);
+    const minDistances = {};
+    _.forEach(rows, (row, i) => {
+      const { elements } = row;
+      let smallestDistance = Number.MAX_SAFE_INTEGER;
+      _.forEach(elements, (element, j) => {
+        const origin = originsArr[i];
+        const destination = destinationsArr[j];
+        const distance = _.get(element, 'distance.value');
+        if (distance < smallestDistance) {
+          _.set(minDistances, origin, destination);
+          smallestDistance = distance;
+        }
+      });
+    });
+    const resp = { data: minDistances };
     return handleSuccess({ ...resp });
   }
 });
