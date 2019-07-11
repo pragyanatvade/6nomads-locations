@@ -7,14 +7,8 @@ const canFetchLocations = ({ deps: { _ }, actions: { executeAction } }) => ({
     const { query } = request;
     const queryObj = _.isString(query) ? JSON.parse(query) : query;
     const { locations = [] } = queryObj;
-    const originsArr = [];
-    const destinationsArr = [];
-    let count = 0;
-    _.forEach(JSON.parse(locations), (location) => {
-      if (count % 2 === 0) originsArr.push(location);
-      else destinationsArr.push(location);
-      count += 1;
-    });
+    const originsArr = JSON.parse(locations);
+    const destinationsArr = JSON.parse(locations);
     const origins = _.reduce(originsArr, (acc, f) => `${acc}${f}|`, '');
     const destinations = _.reduce(destinationsArr, (acc, f) => `${acc}${f}|`, '');
 
@@ -43,12 +37,14 @@ const canFetchLocations = ({ deps: { _ }, actions: { executeAction } }) => ({
         const origin = originsArr[i];
         const destination = destinationsArr[j];
         const distance = _.get(element, 'distance.value');
-        if (distance < smallestDistance) {
+        console.log(origin, destination, distance, smallestDistance);
+        if (distance > 0 && distance < smallestDistance) {
           _.set(minDistances, origin, destination);
           smallestDistance = distance;
         }
       });
     });
+    // const rec = await executeAction(options);
     const resp = { data: minDistances };
     return handleSuccess({ ...resp });
   }
