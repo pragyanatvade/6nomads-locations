@@ -44,7 +44,7 @@
     "lodash": "^4.17.10",
     "micro": "^9.3.3",
     "micro-ex-router": "^1.7.1",
-    "mongoose": "^5.4.15",
+    "mongoose": "^5.7.5",
     "source-map-support": "^0.5.8",
     "transducers-js": "^0.4.174"
   },
